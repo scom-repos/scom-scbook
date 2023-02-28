@@ -4,10 +4,3 @@ data/config.js
 node_modules
 .editorconfig
 package-lock.json
-tsconfig.tsbuildinfo
-test/screenshot
-test/static/modules/*.js
-test/static/modules/**/*.js
-!test/static/modules/lib/**/*.js
-openswap/test/static/modules/*.js
-openswap/test/static/modules/**/*.js
