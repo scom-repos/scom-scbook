@@ -1,0 +1,20 @@
+{
+    "name": "@scbook/main",
+    "version": "0.1.0",
+    "moduleDir": "modules",
+    "main": "@scbook/main",
+    "entrypoint": ".",
+    "modules": {
+        "@scbook/main": {
+            "path": "main",
+            "dependencies": [
+                "@scbook/components"
+            ]
+        },
+        "@scbook/components": {
+            "path": "components",
+            "dependencies": []
+        }
+    },
+    "dependencies": {}
+}
