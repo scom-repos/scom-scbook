@@ -1,0 +1,16 @@
+{
+    "extends": "../../tsconfig.build.json",
+    "compilerOptions": {
+        "experimentalDecorators": true,        
+        "declaration": false,
+        "module": "UMD",
+        "moduleResolution": "node",
+        "baseUrl": ".",
+        "paths": {      
+            "@ijstech/components": ["../../"]
+        }
+    },    
+    "include": [        
+        "modules/**/*.tsx"
+    ]
+}

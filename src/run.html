@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ipfs.ijs.dev/ipfs/bafybeihq26pjof7yob37xjtutiq4iizuc2457ciui3yilqhb55bwmze76u/launcher.js"></script>
+</head>
+<html>
+
+<body>
+    <script>
+        (async () => {
+            let module = await application.newModule('run.js', {});
+            document.body.append(module);
+        })();
+    </script>
+</body>
+
+</html>

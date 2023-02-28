@@ -1,0 +1,15 @@
+{
+  "name": "@scbook/main",
+  "version": "0.1.0",
+  "moduleDir": "src",
+  "main": "@scbook/main",
+  "entrypoint": ".",
+  "modules": {
+    "@scbook/main": {
+      "path": "main"
+    },
+    "@scbook/components": {
+      "path": "components"
+    }
+  }
+}

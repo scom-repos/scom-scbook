@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="/dist/index.js"></script>
+    <style>
+      body {
+        font-family: 'Helvetica, Regular';
+        font-size: 1rem;
+        color: #B9ADC1;
+        --background-default: #00023A;
+      }
+      .fix-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: -99;
+        background-image: url(../assets/under_bg.png);
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: top;
+      }
+    </style>
+</head>
+<html>
+
+<body>
+  <script type="module" src="../nav/nav.js"></script>
+  <script type="module" src="./page1.js"></script>
+  <div id="fixedBg" class="fix-bg"></div>
+  <i-nav></i-nav>
+  <i-home></i-home>
+  <script>
+    const fixedElm = document.getElementById('fixedBg');
+    window.addEventListener('scroll', (e) => {
+      if (window.pageYOffset > 0) {
+        fixedElm.style.backgroundPosition = 'center'
+      } else {
+        fixedElm.style.backgroundPosition = 'top'
+      }
+    })
+  </script>
+</body>
+</html>

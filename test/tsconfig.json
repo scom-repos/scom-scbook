@@ -1,0 +1,19 @@
+{
+    "extends": "../tsconfig.build.json",
+    "compilerOptions": {
+        "composite": true,
+        "experimentalDecorators": true,                
+        "module": "CommonJS",        
+        "moduleResolution": "node",
+        // "outDir": "output",      
+        "baseUrl": ".",
+        "paths": {
+          "@ijstech/components": ["../"]
+        }
+    },        
+    "include": [
+        "utils/*.ts",
+        "*.spec.ts",
+        "static/**/*.tsx"
+    ]
+  }
