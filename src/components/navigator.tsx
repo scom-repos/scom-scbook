@@ -116,6 +116,13 @@ export class DocsNavigator extends Module {
     async renderTree() {
         if (this.treeData) {
             this.treeView.data = this.treeData;
+            for (const treeItem of this.treeView.childNodes) {
+                const treeNode = treeItem as TreeNode;
+                if ((treeNode.data as any)?.label === true) {
+                    treeNode._handleClick = () => false;
+                    treeNode.classList.add('tree-node--label');
+                }
+            }
         }
     }
 
