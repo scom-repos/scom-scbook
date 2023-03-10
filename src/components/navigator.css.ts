@@ -133,7 +133,23 @@ Styles.cssRule('i-docs-navigator', {
             },
             '.is-right': {
               display: 'none'
-            }
+            },
+
+            '&.tree-node--label': {
+              cursor: 'default',
+              fontWeight: 600,
+              $nest: {
+                '*': {
+                  cursor: 'default',
+                },
+                '.i-tree-node_content': {
+                  backgroundColor: 'inherit'
+                },
+                '.i-tree-node_label': {
+                  color: '#8899a8'
+                }
+              }
+            },
           },
         },
       },
