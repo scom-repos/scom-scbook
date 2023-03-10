@@ -643,13 +643,13 @@ export class DocsSite extends Module {
             let dataArr = menuText.split('\n');
             const beginWithAsteriskReg = /^[\s]*\*/;
 
-            dataArr = dataArr.reduce((acc, str) => {
-                if (beginWithAsteriskReg.test(str)) {
-                    str = str.slice(trimSpace);
-                    acc.push(str);
-                }
-                return acc;
-            }, [] as any[]);
+            // dataArr = dataArr.reduce((acc, str) => {
+            //     if (beginWithAsteriskReg.test(str)) {
+            //         str = str.slice(trimSpace);
+            //         acc.push(str);
+            //     }
+            //     return acc;
+            // }, [] as any[]);
 
             let result: any[] = [];
             let indexes = [0];
@@ -661,6 +661,15 @@ export class DocsSite extends Module {
             let id = 1;
             const hash = this.hash || 'readme';
             for (let item of dataArr) {
+                if(!beginWithAsteriskReg.test(item)) {
+                    let caption = item.trim().startsWith('## ') ? item.trim().substr(item.indexOf(' ') + 1, item.length) :  '';
+                    if(!caption) continue;
+                    result.push({
+                        caption,
+                        label: true
+                    })
+                    continue;
+                }
                 const level = item.match(spaceReg)![0].length / space;
                 const caption = item?.match(captionReg)![1];
                 const file = item?.match(fileReg)![1];
@@ -765,25 +774,19 @@ export class DocsSite extends Module {
             } else {
                 text = window.localStorage?.getItem(`$$scbook_${slug}`);
             }
-
             // Replace root file from
             const regex = /!\[[^\]]*\]\((?<filename>.*?)(?=\"|\))(?<optionalpart>\".*\")?\)/g;
             const linkRegex = /\[[^\]]*\]\((?<filename>.*?)(?=\"|\))(?<optionalpart>\".*\")?\)/g;
-
             text = text.replace(regex, (string: string, filename: string) => {
                 if (string.indexOf('http://') >= 0 || string.indexOf('https://') >= 0) return string;
-                const newFileName = `${this.entrypoint}/${encodeURIComponent(
-                    filename.replace('/..//g', '').replace('/\\/g', '')
-                )}`;
+                const newFileName = `${this.entrypoint}/${filename.replace('/..//g', '').replace('/\\/g', '')}`;
                 return string.replace(filename, newFileName);
             });
             // Link
             text = text.replace(linkRegex, (string: string, filename: string) => {
                 if (string.indexOf('http://') >= 0 || string.indexOf('https://') >= 0 || string.indexOf('.md') < 0)
                     return string;
-                const newFileName = `${window.location.href}/${encodeURIComponent(
-                    filename.replace('/\\/g', '').replace('.md', '')
-                )}`;
+                const newFileName = `${window.location.href}/${filename.replace('/\\/g', '').replace('.md', '')}`;
                 return string.replace(filename, newFileName);
             });
             this.currentNode.text = text;

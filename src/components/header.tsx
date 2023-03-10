@@ -98,7 +98,7 @@ export class DocsHeader extends Module {
                         index['slug'] = index['slug'].replace('.md', '').toLowerCase().replace('/readme', '');
                     index['id'] = ++id;
                 }
-                this.searchBar.buildIndex(this.searchIndex, ['title', 'text'], ['title', 'text', 'slug']);
+                // this.searchBar.buildIndex(this.searchIndex, ['title', 'text'], ['title', 'text', 'slug']);
 
                 // console.log('build index search index', this.searchIndex);
                 // console.log('keys', keys);

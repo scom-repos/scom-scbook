@@ -109,6 +109,10 @@ export class DocsNavigator extends Module {
     //     return treeNode;
     // }
 
+    async handleRenderNode(node: any, b: any) {
+        console.log('handleRenderNode', node, b);
+    }
+
     async renderTree() {
         if (this.treeData) {
             this.treeView.data = this.treeData;
@@ -132,6 +136,7 @@ export class DocsNavigator extends Module {
                             id="treeView"
                             data={[]}
                             onActiveChange={this.handleActive}
+                            onRenderNode={this.handleRenderNode}
                             // onLazyLoad={this.handleLazyLoad}
                             // onRenderNode={this.handleRenderNode}
                         ></i-tree-view>
